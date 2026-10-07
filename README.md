@@ -1,12 +1,16 @@
-SOC Lab: Windows Authentication Monitoring and Failed Logon Investigation
-Project Overview
+### SOC Lab: Windows Authentication Monitoring and Failed Logon Investigation
+
+ ### Project Overview
+ 
 This project documents a hands on Security Operations Centre (SOC) investigation using Windows Security Event Logs and PowerShell.
 
 The objective was to simulate a common SOC monitoring scenario involving repeated failed authentication attempts, identify the relevant Windows security events, investigate the activity, correlate failed and successful logons, and develop a PowerShell detection script.
 
 The investigation was performed in a controlled Windows environment using deliberately generated failed logon activity.
 
-The project demonstrates practical SOC activities including:
+The project demonstrates practical 
+
+### SOC activities including:
 
 Security event monitoring
 Authentication log analysis
@@ -23,7 +27,7 @@ The primary objective was to determine how a SOC analyst could detect and invest
 
 The investigation focused on:
 
-Windows Security Event ID 4625 — An account failed to log on
+### Windows Security Event ID 4625 — An account failed to log on
 
 The investigation was designed to answer:
 
@@ -35,7 +39,9 @@ Which Windows process was involved?
 Which service was associated with that process?
 Were successful logons observed afterwards?
 Could the activity be detected automatically?
-Lab Environment
+
+### Lab Environment
+
 Component	Environment
 Operating System	Windows
 Hostname	DESKTOP-HIKEKDE
@@ -45,14 +51,17 @@ Analysis Tool	PowerShell
 Primary Event	Event ID 4625
 Correlation Event	Event ID 4624
 Detection Window	10 minutes
-1. Generating Controlled Authentication Events
+
+1. ### Generating Controlled Authentication Events
+
 To create realistic SOC investigation data, several incorrect password attempts were deliberately generated against the local Windows account.
 
 This produced multiple Windows Security Event ID 4625 events.
 
 The activity was intentionally generated for testing and does not represent a real world attack against an external system.
 
-2. Detecting Failed Logons
+2 . ### Detecting Failed Logons
+
 The Windows Security log was queried for Event ID 4625.
 
 Get-WinEvent -FilterHashtable @{LogName="Security"; Id=4625} -MaxEvents 10 |
